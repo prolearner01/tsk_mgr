@@ -12,7 +12,7 @@ export function TaskHeader() {
                     calendar_today
                 </span>
                 <span className="text-xs font-semibold text-secondary-gray uppercase tracking-wider">
-                    Oct 24, 2023
+                    {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </span>
             </div>
         </div>
