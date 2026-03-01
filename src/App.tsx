@@ -1,37 +1,37 @@
+
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { TaskDashboard } from './components/TaskDashboard';
-import { TaskHeader } from './components/TaskHeader';
-import { TaskItem } from './components/TaskItem';
-import { TaskInput } from './components/TaskInput';
-import { TaskStats } from './components/TaskStats';
-import { useTaskStore } from './store/useTaskStore';
+import { LoginPage } from './pages/LoginPage';
+import { SignupPage } from './pages/SignupPage';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { useAuthStore } from './store/useAuthStore';
 
 function App() {
-  const tasks = useTaskStore((state) => state.tasks);
+  const { initialize } = useAuthStore();
+
+  useEffect(() => {
+    initialize();
+  }, [initialize]);
 
   return (
-    <Layout>
-      <TaskDashboard>
-        <TaskHeader />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-        <div className="p-8">
-          <div className="space-y-1 mb-10">
-            {tasks.map((task) => (
-              <TaskItem
-                key={task.id}
-                id={task.id}
-                text={task.text}
-                completed={task.completed}
-              />
-            ))}
-          </div>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={
+            <Layout>
+              <TaskDashboard />
+            </Layout>
+          } />
+        </Route>
 
-          <TaskInput />
-
-          <TaskStats />
-        </div>
-      </TaskDashboard>
-    </Layout>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

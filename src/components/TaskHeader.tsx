@@ -3,7 +3,7 @@ export function TaskHeader() {
         <div className="p-8 pb-0 flex justify-between items-start">
             <div className="flex flex-col gap-1">
                 <h1 className="text-2xl font-bold text-main-dark leading-tight tracking-tight">
-                    Task Dashboard
+                    Task Manager
                 </h1>
                 <p className="text-secondary-gray text-sm">Professional workflow management</p>
             </div>
