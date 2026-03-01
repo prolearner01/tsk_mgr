@@ -4,6 +4,26 @@
 
 @layer base {
     body {
-        @apply bg-bg-page font-sans text-main-dark;
+        font-family: 'Inter', sans-serif;
+        color: #0f172a;
+        @apply bg-bg-page;
+    }
+}
+
+@layer utilities {
+    .glass-panel {
+        @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-2xl;
+    }
+
+    .glass-panel-heavy {
+        @apply bg-white/80 backdrop-blur-2xl border border-white/60 shadow-2xl;
+    }
+
+    .btn-gradient {
+        @apply bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+    }
+
+    .bg-animated-gradient {
+        @apply bg-gradient-to-br from-indigo-50 via-purple-50 to-emerald-50 bg-[length:400%_400%] animate-gradient-xy;
     }
 }

@@ -16,17 +16,17 @@ import puppeteer from 'puppeteer';
 
         await page.setViewport({ width: 1280, height: 800 });
 
-        // Go to local dev server
-        await page.goto('http://localhost:5173', { waitUntil: 'networkidle0' });
+        // Go to login page
+        await page.goto('http://localhost:5176/login', { waitUntil: 'networkidle0' });
+        await page.screenshot({ path: 'screenshot_login_premium.png', fullPage: true });
+        console.log('Login screenshot captured');
 
-        const content = await page.content();
-        console.log('PAGE CONTENT:', content);
+        // Go to dashboard
+        await page.goto('http://localhost:5176', { waitUntil: 'networkidle0' });
+        await page.screenshot({ path: 'screenshot_dashboard_premium.png', fullPage: true });
+        console.log('Dashboard screenshot captured');
 
-        // Take screenshot
-        const path = 'screenshot.png';
-        await page.screenshot({ path, fullPage: true });
-
-        console.log(`Screenshot captured at: ${path}`);
+        console.log(`Screenshots captured successfully.`);
         await browser.close();
     } catch (error) {
         console.error('Error capturing screenshot:', error);

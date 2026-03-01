@@ -1,5 +1,5 @@
 
-import React from 'react';
+// Removed unused import
 import { useTaskStore } from '../store/useTaskStore';
 import { TaskHeader } from './TaskHeader';
 import { TaskInput } from './TaskInput';
@@ -10,7 +10,7 @@ export function TaskDashboard() {
     const tasks = useTaskStore((state) => state.tasks);
 
     return (
-        <div className="w-full max-w-[640px] bg-white rounded-card shadow-[0_4px_20px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div className="w-full max-w-[680px] glass-panel-heavy rounded-3xl overflow-hidden animate-slide-up">
             <TaskHeader />
             <TaskInput />
             <div className="flex flex-col">

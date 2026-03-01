@@ -44,7 +44,7 @@ export function LoginPage() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-main-dark/10 focus:border-main-dark transition-colors"
+                        className="w-full px-4 py-3 bg-white/50 border border-slate-200/60 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all placeholder:text-slate-400 shadow-inner focus:bg-white"
                         placeholder="Enter your email"
                         required
                     />
@@ -55,7 +55,7 @@ export function LoginPage() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-main-dark/10 focus:border-main-dark transition-colors"
+                        className="w-full px-4 py-3 bg-white/50 border border-slate-200/60 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all placeholder:text-slate-400 shadow-inner focus:bg-white"
                         placeholder="••••••••"
                         required
                     />
@@ -64,16 +64,23 @@ export function LoginPage() {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="mt-2 w-full bg-main-dark text-white text-sm font-semibold py-2.5 rounded-lg hover:bg-slate-800 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="mt-4 w-full btn-gradient font-bold py-3.5 rounded-xl disabled:opacity-70 disabled:cursor-not-allowed text-sm"
                 >
                     {loading ? 'Signing in...' : 'Sign in'}
                 </button>
 
-                <div className="text-center text-xs text-secondary-gray mt-4">
-                    Don't have an account?{' '}
-                    <Link to="/signup" className="text-main-dark font-semibold hover:underline">
-                        Sign up
-                    </Link>
+                <div className="flex flex-col items-center gap-2 mt-4 text-xs text-secondary-gray">
+                    <div>
+                        <Link to="/forgot-password" className="text-corporate-blue font-semibold hover:underline">
+                            Forgot password?
+                        </Link>
+                    </div>
+                    <div>
+                        Don't have an account?{' '}
+                        <Link to="/signup" className="text-main-dark font-semibold hover:underline">
+                            Sign up
+                        </Link>
+                    </div>
                 </div>
             </form>
         </AuthLayout>

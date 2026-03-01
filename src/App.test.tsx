@@ -56,7 +56,7 @@ describe('Task Manager', () => {
     it('can toggle a task completion status', () => {
         render(<App />);
 
-        const taskText = screen.getByText('Finalize quarterly earnings report');
+        screen.getByText('Finalize quarterly earnings report');
         // Find the checkbox associated with this task. 
         // The structure is <label><input /><span /></label> so we can find by label text or just assume input is near.
         // Easier approach: Get the checkbox by role within the list item.
