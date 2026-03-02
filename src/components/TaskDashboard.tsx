@@ -20,7 +20,7 @@ export function TaskDashboard() {
                     </div>
                 ) : (
                     tasks.map((task) => (
-                        <TaskItem key={task.id} id={task.id} text={task.text} completed={task.completed} />
+                        <TaskItem key={task.id} {...task} />
                     ))
                 )}
             </div>

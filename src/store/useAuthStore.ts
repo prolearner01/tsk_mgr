@@ -2,6 +2,7 @@
 import { create } from 'zustand';
 import type { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
+import { useTaskStore } from './useTaskStore';
 
 interface AuthState {
     session: Session | null;
@@ -23,6 +24,11 @@ export const useAuthStore = create<AuthState>((set) => ({
         // Listen for changes
         supabase.auth.onAuthStateChange((_event, session) => {
             set({ session, user: session?.user ?? null, loading: false });
+            if (session) {
+                useTaskStore.getState().fetchTasks();
+            } else {
+                useTaskStore.getState().clearTasks();
+            }
         });
     },
     signOut: async () => {
