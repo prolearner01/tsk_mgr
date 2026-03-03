@@ -162,8 +162,12 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
     generateSubtasks: async (taskId, title) => {
         try {
+            const { data: sessionData } = await supabase.auth.getSession();
+            const token = sessionData.session?.access_token;
+
             const { data, error } = await supabase.functions.invoke('generate-subtasks', {
-                body: { taskId, title }
+                body: { taskId, title },
+                headers: token ? { Authorization: `Bearer ${token}` } : undefined
             });
             if (error) throw error;
 
