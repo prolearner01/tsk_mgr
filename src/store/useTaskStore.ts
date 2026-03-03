@@ -162,12 +162,12 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
 
     generateSubtasks: async (taskId, title) => {
         try {
-            const { data: sessionData } = await supabase.auth.getSession();
-            const token = sessionData.session?.access_token;
+            // Bypass user JWT issue by explicitly sending the Anon key
+            const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
             const { data, error } = await supabase.functions.invoke('generate-subtasks', {
                 body: { taskId, title },
-                headers: token ? { Authorization: `Bearer ${token}` } : undefined
+                headers: { Authorization: `Bearer ${anonKey}` }
             });
             if (error) throw error;
 
