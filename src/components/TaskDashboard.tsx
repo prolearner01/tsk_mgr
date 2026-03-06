@@ -6,13 +6,15 @@ import { TaskInput } from './TaskInput';
 import { TaskItem } from './TaskItem';
 import { TaskStats } from './TaskStats';
 import { UserProfile } from './UserProfile';
+import { SmartSearch } from './SmartSearch';
 
 export function TaskDashboard() {
     const tasks = useTaskStore((state) => state.tasks);
 
     return (
-        <>
+        <div className="flex flex-col items-center w-full px-4">
             <UserProfile />
+            <SmartSearch />
             <div className="w-full max-w-[680px] glass-panel-heavy rounded-3xl overflow-hidden animate-slide-up">
                 <TaskHeader />
                 <TaskInput />
@@ -29,6 +31,6 @@ export function TaskDashboard() {
                 </div>
                 <TaskStats />
             </div>
-        </>
+        </div>
     );
 }
